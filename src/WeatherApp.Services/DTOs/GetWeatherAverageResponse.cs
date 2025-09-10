@@ -1,5 +1,7 @@
 using System.Text.Json.Serialization;
 
+using YamlDotNet.Serialization;
+
 namespace WeatherApp.Services.DTOs;
 /// <summary>
 /// Response DTO for average weather data.
@@ -10,29 +12,34 @@ public class GetWeatherAverageResponse
     /// Average temperature over the specified period.
     /// </summary>
     [JsonPropertyName("averageTemperature")]
+    [YamlMember(Alias = "averageTemperature")]
     public int AverageTemperature { get; set; }
 
     /// <summary>
     /// Unit of temperature measurement (e.g., 'F' for Fahrenheit, 'C' for Celsius).
     /// </summary>
     [JsonPropertyName("unit")]
+    [YamlMember(Alias = "unit")]
     public required char Unit { get; set; }
 
     /// <summary>
     /// Latitude of the location.
     /// </summary>
     [JsonPropertyName("lat")]
+    [YamlMember(Alias = "lat")]
     public required double Latitude { get; set; }
 
     /// <summary>
     /// Longitude of the location.
     /// </summary>
     [JsonPropertyName("lon")]
+    [YamlMember(Alias = "lon")]
     public double Longitude { get; set; }
 
     /// <summary>
     /// Indicates if rain is possible during the forecasted period.
     /// </summary>
     [JsonPropertyName("rainPossibleInPeriod")]
+    [YamlMember(Alias = "rainPossibleInPeriod")]
     public bool RainPossibleInPeriod { get; set; }
 }

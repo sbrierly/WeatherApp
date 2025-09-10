@@ -1,6 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 using WeatherApp.Domain.Enums;
 using WeatherApp.Infrastructure.Geo;
@@ -62,18 +63,18 @@ public class WeatherController : ControllerBase
     /// Gets an average weather forecast for a multi-day period for the specified zipcode.
     /// </summary>
     /// <param name="zipcode">The location zipcode</param>
-    /// <param name="days">Number of days for forecast</param>
+    /// <param name="timePeriod">Number of days for forecast</param>
     /// <param name="units">The units for temperature (e.g., "fahrenheit" or "celsius"). Default is "fahrenheit".</param>
     /// <returns>The average weather report</returns>
     public async Task<IActionResult> Get(
         [FromRoute, RegularExpression("^[0-9]{5}$")] string zipcode,
-        [FromQuery, Range(2, 5)] int days,
+        [FromQuery, BindRequired, Range(2, 5)] int timePeriod,
         [FromQuery] TemperatureUnit units = TemperatureUnit.Fahrenheit)
     {
         try
         {
-            _logger.LogInformation("Fetching {Days}-day average weather forecast for zipcode {Zipcode} with units {Units}", days, zipcode, units);
-            var result = await _weatherService.GetForecastByZipcode(zipcode, days, units);
+            _logger.LogInformation("Fetching {Days}-day average weather forecast for zipcode {Zipcode} with units {Units}", timePeriod, zipcode, units);
+            var result = await _weatherService.GetForecastByZipcode(zipcode, timePeriod, units);
             return Ok(result);
         }
         catch (Exception ex)

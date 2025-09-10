@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherApp.Infrastructure",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherApp.Services", "src\WeatherApp.Services\WeatherApp.Services.csproj", "{94DC9021-301B-4912-B0EB-DD5B59E0B803}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherApp.Cli", "src\WeatherApp.Cli\WeatherApp.Cli.csproj", "{7740E7B6-E35B-4A60-9180-75BD65CD5F07}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherApp.Api.Tests", "tests\WeatherApp.Api.Tests\WeatherApp.Api.Tests.csproj", "{4309428F-28C3-4303-B128-1D01104CCFA5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherApp.Domain.Tests", "tests\WeatherApp.Domain.Tests\WeatherApp.Domain.Tests.csproj", "{4309428F-28C3-4303-B128-1D01104CCFA5}"
