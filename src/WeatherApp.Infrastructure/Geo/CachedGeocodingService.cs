@@ -17,6 +17,13 @@ public class CachedGeocodingService : IGeocodingService
     private readonly ApiOptions _options;
     private TimeSpan _cacheDuration;
 
+    /// <summary>
+    /// Cached Geocoding Service.
+    /// </summary>
+    /// <param name="innerService">The IGeocodingService service for which values will be cached.</param>
+    /// <param name="cache">The type of cache to use.</param>
+    /// <param name="options">Options for the API.</param>
+    /// <exception cref="ArgumentNullException"></exception>
     public CachedGeocodingService(IGeocodingService innerService, IMemoryCache cache, IOptionsSnapshot<ApiOptions> options)
     {
         _innerService = innerService ?? throw new ArgumentNullException(nameof(innerService));
@@ -25,6 +32,11 @@ public class CachedGeocodingService : IGeocodingService
         _cacheDuration = TimeSpan.FromMinutes(_options.CacheTTLMinutes);
     }
 
+    /// <summary>
+    /// Get coordinates from cache, if available, otherwise call inner service.
+    /// </summary>
+    /// <param name="zipcode"></param>
+    /// <returns></returns>
     public async Task<Coordinates> GetCoordinatesAsync(string zipcode)
     {
         string cacheKey = $"geocoding:{zipcode}";

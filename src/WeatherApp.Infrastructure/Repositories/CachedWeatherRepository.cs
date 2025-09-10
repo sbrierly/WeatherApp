@@ -18,6 +18,13 @@ public class CachedWeatherRepository : IWeatherRepository
     private readonly ApiOptions _options;
     private readonly TimeSpan _cacheDuration;
 
+    /// <summary>
+    /// CachedWeatherRepository
+    /// </summary>
+    /// <param name="innerRepository"></param>
+    /// <param name="cache"></param>
+    /// <param name="options"></param>
+    /// <exception cref="ArgumentNullException"></exception>
     public CachedWeatherRepository(IWeatherRepository innerRepository, IMemoryCache cache, IOptionsSnapshot<ApiOptions> options)
     {
         _innerRepository = innerRepository ?? throw new ArgumentNullException(nameof(innerRepository));
@@ -26,6 +33,11 @@ public class CachedWeatherRepository : IWeatherRepository
         _cacheDuration = TimeSpan.FromMinutes(_options.CacheTTLMinutes);
     }
 
+    /// <summary>
+    /// GetCurrentWeather
+    /// </summary>
+    /// <param name="coordinates"></param>
+    /// <returns></returns>
     public async Task<WeatherForecast> GetCurrentWeather(Coordinates coordinates)
     {
         string cacheKey = $"weather:current:{coordinates.Latitude}:{coordinates.Longitude}";
@@ -38,6 +50,12 @@ public class CachedWeatherRepository : IWeatherRepository
         return forecast;
     }
 
+    /// <summary>
+    /// GetWeatherForecast
+    /// </summary>
+    /// <param name="coordinates"></param>
+    /// <param name="days"></param>
+    /// <returns></returns>
     public async Task<IEnumerable<WeatherForecast>> GetWeatherForecast(Coordinates coordinates, int days)
     {
         string cacheKey = $"weather:forecast:{coordinates.Latitude}:{coordinates.Longitude}:{days}";

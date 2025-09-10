@@ -10,9 +10,9 @@ using WeatherApp.Domain.ValueObjects;
 public interface IWeatherRepository
 {
     /// <summary>
-    /// Fetches current weather for a given location (e.g., zipcode).
+    /// Fetches current weather for a given coordinates.
     /// </summary>
-    /// <param name="zipcode">The location zipcode.</param>
+    /// <param name="coordinates">The coordinates for the weather forecast.</param>
     /// <param name="units">The units for temperature (e.g., "fahrenheit" or "celsius"). Default is "fahrenheit".</param>
     /// <returns>Weather report for the location.</returns>
     Task<WeatherForecast> GetCurrentWeather(Coordinates coordinates);
@@ -20,7 +20,7 @@ public interface IWeatherRepository
     /// <summary>
     /// Fetches a multi-day forecast for a given location.
     /// </summary>
-    /// <param name="zipcode">The location zipcode.</param>
+    /// <param name="coordinates">The coordinates for the weather forecast.</param>
     /// <param name="days">Number of days for forecast.</param>
     /// <param name="units">The units for temperature (e.g., "fahrenheit" or "celsius"). Default is "fahrenheit".</param>
     /// <returns>List of WeatherReport for each day.</returns>

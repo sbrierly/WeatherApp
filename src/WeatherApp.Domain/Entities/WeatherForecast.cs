@@ -17,7 +17,11 @@ namespace WeatherApp.Domain.Entities
         /// </summary>
         public required Temperature Temperature { get; set; }
 
+        /// <summary>
+        /// The condition details of the forecast.  Cloudy, Rainy, etc.
+        /// </summary>
         public required string Condition { get; set; }
+
         /// <summary>
         /// The geographical location associated with the forecast.
         /// </summary>

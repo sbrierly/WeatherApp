@@ -12,8 +12,6 @@ public class WeatherAnalysisService : IWeatherAnalysisService
     /// Calculates the average temperature from a list of weather forecasts over a specified number of days and in the specified units.
     /// </summary>
     /// <param name="forecasts">Collection of weather forecasts.</param>
-    /// <param name="days">Number of days to consider for the average.</param>
-    /// <param name="units">Temperature units to use for the calculation.</param>
     /// <returns>Average temperature over the specified period.</returns>
     /// <exception cref="InvalidOperationException"></exception>
     public Temperature GetAverageTemperature(IEnumerable<WeatherForecast> forecasts)

@@ -1,5 +1,8 @@
 namespace WeatherApp.Domain.ValueObjects;
 
+/// <summary>
+/// Temperature struct for storing value in Fahrenheit with helper methods.
+/// </summary>
 public readonly record struct Temperature
 {
     /// <summary>
@@ -51,51 +54,3 @@ public readonly record struct Temperature
         return new Temperature(avgF);
     }
 }
-
-
-
-// /// <summary>
-// /// Represents a temperature with a specific unit (Celsius or Fahrenheit).
-// /// Provides safe conversion between units.
-// /// </summary>
-// public readonly record struct Temperature(double Value, TemperatureUnit Unit)
-// {
-//     /// <summary>
-//     /// Gets the temperature in Celsius.
-//     /// </summary>
-//     public double Celsius =>
-//         Unit == TemperatureUnit.Celsius
-//             ? Value
-//             : (Value - 32) * 5.0 / 9.0;
-
-//     /// <summary>
-//     /// Gets the temperature in Fahrenheit.
-//     /// </summary>
-//     public double Fahrenheit =>
-//         Unit == TemperatureUnit.Fahrenheit
-//             ? Value
-//             : (Value * 9.0 / 5.0) + 32;
-
-//     /// <summary>
-//     /// Creates a Temperature in Celsius.
-//     /// </summary>
-//     public static Temperature FromCelsius(double celsius) =>
-//         new(celsius, TemperatureUnit.Celsius);
-
-//     /// <summary>
-//     /// Creates a Temperature in Fahrenheit.
-//     /// </summary>
-//     public static Temperature FromFahrenheit(double fahrenheit) =>
-//         new(fahrenheit, TemperatureUnit.Fahrenheit);
-
-//     public static Temperature Average(IEnumerable<Temperature> temperatures)
-//     {
-//         if (temperatures == null || !temperatures.Any())
-//             throw new ArgumentException("Temperature collection is null or empty", nameof(temperatures));
-
-//         var totalFahrenheit = temperatures.Sum(t => t.Fahrenheit);
-//         var averageFahrenheit = totalFahrenheit / temperatures.Count();
-
-//         return FromFahrenheit(averageFahrenheit);
-//     }
-// }

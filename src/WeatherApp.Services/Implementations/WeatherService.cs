@@ -38,7 +38,7 @@ public class WeatherService : IWeatherService
     public async Task<GetWeatherCurrentResponse> GetCurrentWeatherByZipcode(string zipcode, TemperatureUnit units)
     {
         var coordinates = await _geocodingService.GetCoordinatesAsync(zipcode);
-        var current = await _repository.GetCurrentWeather(coordinates) ?? throw new InvalidOperationException($"No weather data found for zipcode {zipcode}");
+        var current = await _repository.GetCurrentWeather(coordinates);
 
         return GetWeatherCurrentResponseMapper.MapToDto(current, units);
     }
@@ -59,13 +59,6 @@ public class WeatherService : IWeatherService
         var averageTemp = _weatherAnalysisService.GetAverageTemperature(forecast);
         var rainPossible = _weatherAnalysisService.RainPossibleInPeriod(forecast);
 
-        return new GetWeatherAverageResponse
-        {
-            AverageTemperature = (int)Math.Round(units.ToString().ToLower() == "fahrenheit" ? averageTemp.Fahrenheit : averageTemp.Celsius),
-            Unit = char.ToUpper(units.ToString()[0]),
-            RainPossibleInPeriod = rainPossible,
-            Longitude = coordinates.Longitude,
-            Latitude = coordinates.Latitude
-        };
+        return GetWeatherForecastResponseMapper.MapToDto(coordinates, units, averageTemp, rainPossible);
     }
 }

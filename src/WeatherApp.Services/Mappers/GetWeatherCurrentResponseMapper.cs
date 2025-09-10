@@ -11,7 +11,7 @@ class GetWeatherCurrentResponseMapper
         return new GetWeatherCurrentResponse
         {
             CurrentTemperature = (int)Math.Round(units == TemperatureUnit.Fahrenheit ? forecast.Temperature.Fahrenheit : forecast.Temperature.Celsius),
-            RainPossibleToday = forecast.Condition.ToLower().Contains("rain"),
+            RainPossibleToday = forecast.Condition.Contains("rain", StringComparison.CurrentCultureIgnoreCase),
             Unit = char.ToUpper(units.ToString()[0]),
             Latitude = forecast.Location.Latitude,
             Longitude = forecast.Location.Longitude
