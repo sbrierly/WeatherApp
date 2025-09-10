@@ -1,4 +1,5 @@
 FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
+
 WORKDIR /src
 COPY src ./src
 
@@ -10,9 +11,8 @@ WORKDIR /app
 
 COPY --from=build /app/publish .
 
-ENV ASPNETCORE_URLS=http://+:8080
+ENV ASPNETCORE_URLS=http://+:5000
 
-EXPOSE 8080
+EXPOSE 5000
 
 ENTRYPOINT ["dotnet", "WeatherApp.Api.dll"]
-# ENTRYPOINT ["sleep", "infinity"]

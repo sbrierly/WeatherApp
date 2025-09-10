@@ -42,7 +42,7 @@ public class WeatherController : ControllerBase
     /// <param name="units">The units for temperature (e.g., "fahrenheit" or "celsius"). Default is "fahrenheit".</param>
     /// <returns>The current weather report</returns>
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(GetWeatherCurrentResponse))]
-    public async Task<IActionResult> Get(
+    public async Task<IActionResult> GetCurrentWeather(
         [FromRoute, RegularExpression("^[0-9]{5}$")] string zipcode,
         [FromQuery] TemperatureUnit units = TemperatureUnit.Fahrenheit)
     {
@@ -66,7 +66,7 @@ public class WeatherController : ControllerBase
     /// <param name="timePeriod">Number of days for forecast</param>
     /// <param name="units">The units for temperature (e.g., "fahrenheit" or "celsius"). Default is "fahrenheit".</param>
     /// <returns>The average weather report</returns>
-    public async Task<IActionResult> Get(
+    public async Task<IActionResult> GetAverageWeather(
         [FromRoute, RegularExpression("^[0-9]{5}$")] string zipcode,
         [FromQuery, BindRequired, Range(2, 5)] int timePeriod,
         [FromQuery] TemperatureUnit units = TemperatureUnit.Fahrenheit)
