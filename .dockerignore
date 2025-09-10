@@ -1,0 +1,43 @@
+# Ignore .git folder and related files
+.git
+.gitignore
+.gitattributes
+
+# User-specific files
+*.swp
+*.swo
+*.user
+*.sln.docstates
+*.vs
+.vscode
+.idea
+
+# Build output
+bin/
+obj/
+out/
+artifacts/
+[Bb]uild/
+[Ll]ogs/
+
+# Docker-specific
+docker-compose*
+*.Dockerfile
+
+# Test projects (not needed for container build)
+tests/
+
+# OS generated
+[Dd]esktop.ini
+[Tt]humbs.db
+*.DS_Store
+
+# Package caches
+*.nupkg
+*.snupkg
+*.tgz
+
+# Others
+.env
+
+scratch.txt

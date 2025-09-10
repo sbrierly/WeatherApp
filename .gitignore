@@ -1,0 +1,67 @@
+# =====================
+# .NET / C# files
+# =====================
+bin/
+obj/
+[Bb]uild/
+[Ll]ogs/
+*.user
+*.userosscache
+*.suo
+*.svclog
+*.pdb
+*.cache
+*.ilk
+*.ncb
+*.sdf
+*.ipch
+*.aps
+*.pch
+*.rsp
+
+# NuGet
+*.nupkg
+*.snupkg
+packages/
+.nuget/
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# =====================
+# VS Code
+# =====================
+.vscode/
+*.code-workspace
+
+# =====================
+# Docker
+# =====================
+docker-compose.override.yml
+Dockerfile.*
+docker-compose*.yml
+
+# =====================
+# OS generated
+# =====================
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*.swo
+
+# =====================
+# Test / temporary files
+# =====================
+*.log
+*.tmp
+*.temp
+*.bak
+
+# =====================
+# Others
+# =====================
+.env
+.idea/
+*.iml
+scratch.txt
