@@ -34,10 +34,10 @@ public class CachedWeatherRepository : IWeatherRepository
     }
 
     /// <summary>
-    /// GetCurrentWeather
+    /// Get the current weather from cache, if available, otherwise call inner service.
     /// </summary>
-    /// <param name="coordinates"></param>
-    /// <returns></returns>
+    /// <param name="coordinates">Coordinates of the location</param>
+    /// <returns>Weather forecast</returns>
     public async Task<WeatherForecast> GetCurrentWeather(Coordinates coordinates)
     {
         string cacheKey = $"weather:current:{coordinates.Latitude}:{coordinates.Longitude}";
@@ -51,11 +51,11 @@ public class CachedWeatherRepository : IWeatherRepository
     }
 
     /// <summary>
-    /// GetWeatherForecast
+    /// Get Weather Forecast from cache, if available, otherwise call inner service.
     /// </summary>
-    /// <param name="coordinates"></param>
-    /// <param name="days"></param>
-    /// <returns></returns>
+    /// <param name="coordinates">Coordinates of the location</param>
+    /// <param name="days">Number of days for forecast</param>
+    /// <returns>IEnnumerable of WeatherForecast</returns>
     public async Task<IEnumerable<WeatherForecast>> GetWeatherForecast(Coordinates coordinates, int days)
     {
         string cacheKey = $"weather:forecast:{coordinates.Latitude}:{coordinates.Longitude}:{days}";

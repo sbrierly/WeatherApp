@@ -137,7 +137,7 @@ WeatherApp.Cli get-average-weather 01440 Celsius 3 --output TEXT
 4. Add additional unit tests
 5. Add end to end integration tests
 6. Shared secret store for API key
-7. Review and update docstrings
+7. Use code formatter
 
 ## Data Source
 

@@ -1,5 +1,4 @@
 using WeatherApp.Domain.Entities;
-using WeatherApp.Domain.Enums;
 using WeatherApp.Domain.ValueObjects;
 using WeatherApp.Infrastructure.Models;
 
@@ -14,7 +13,6 @@ public static class WeatherForecastMapper
     /// Maps OpenWeatherGetCurrentResponse to WeatherForecast domain entity.
     /// </summary>
     /// <param name="response">Response from OpenWeather API</param>
-    /// <param name="units">Temperature units to use for the mapping</param>
     /// <returns>A WeatherForecast domain entity</returns>
     public static WeatherForecast MapToDomain(OpenWeatherGetCurrentResponse response)
     {
