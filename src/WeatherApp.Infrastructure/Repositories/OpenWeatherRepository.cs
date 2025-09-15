@@ -1,10 +1,8 @@
 using System.Net.Http.Json;
 
-using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Options;
 
 using WeatherApp.Domain.Entities;
-using WeatherApp.Domain.Enums;
 using WeatherApp.Domain.Repositories;
 using WeatherApp.Domain.ValueObjects;
 using WeatherApp.Infrastructure.Mappers;
@@ -15,13 +13,16 @@ namespace WeatherApp.Infrastructure.Repositories;
 public class OpenWeatherRepository : IWeatherRepository
 {
     private readonly HttpClient _httpClient;
-    private readonly IMemoryCache _memoryCache;
     private readonly ApiOptions _options;
 
-    public OpenWeatherRepository(HttpClient httpClient, IMemoryCache memoryCache, IOptionsSnapshot<ApiOptions> options)
+    /// <summary>
+    /// Repository for fetching weather data from OpenWeather API.
+    /// </summary>
+    /// <param name="httpClient">HttpClient for making API requests.</param>
+    /// <param name="options">Options for the OpenWeather API.</param>
+    public OpenWeatherRepository(HttpClient httpClient, IOptionsSnapshot<ApiOptions> options)
     {
         _httpClient = httpClient;
-        _memoryCache = memoryCache;
         _options = options.Get("WeatherApi");
     }
 
